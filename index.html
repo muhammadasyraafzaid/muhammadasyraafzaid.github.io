@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        /* --- THEME: ORANGE, RED & BLACK ENGINEERING --- */
+        /* --- THEME: BLACK, RED & ORANGE ENGINEERING --- */
+        /* We use !important to override any blue colors from external CSS */
 
         :root {
-            --bg-color: #0a0a0a;       /* Deep Black */
-            --card-bg: #141414;        /* Dark Charcoal */
-            --accent-orange: #FF6B00;  /* Safety Orange */
-            --accent-red: #FF0000;     /* Engineering Red */
+            --bg-color: #0a0a0a;
+            --card-bg: #141414;
+            --accent-orange: #FF6B00;
+            --accent-red: #FF0000;
             --text-main: #E0E0E0;
             --text-muted: #B0B0B0;
         }
@@ -25,12 +26,14 @@
         /* Smooth scroll */
         html {
             scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-orange) #000;
         }
 
         /* Global Body Styles */
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--bg-color) !important;
+            color: var(--text-main) !important;
             font-family: 'Lato', sans-serif;
             margin: 0;
             padding: 0;
@@ -48,14 +51,14 @@
             transform: translateY(0);
         }
 
-        /* Animated gradient header - Orange, Red, Black */
+        /* Animated gradient header - Black, Red, Orange */
         header {
-            background: linear-gradient(-45deg, #000000, #4a0000, #ff4500, #ff8c00, #000000);
+            background: linear-gradient(135deg, #000000 0%, #4a0000 50%, #ff4500 100%) !important;
             background-size: 400% 400%;
             animation: gradientMove 8s ease infinite;
-            color: white;
+            color: white !important;
             padding: 60px 0;
-            border-bottom: 4px solid var(--accent-red);
+            border-bottom: 4px solid var(--accent-red) !important;
             box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
         }
 
@@ -65,15 +68,9 @@
             100% { background-position: 0% 50%; }
         }
 
-        header h1 {
-            color: #ffffff;
+        header h1, header p {
+            color: #ffffff !important;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            margin: 0;
-        }
-
-        header p {
-            color: #dcdcdc;
-            font-size: 1.1rem;
         }
 
         /* Sticky nav */
@@ -81,10 +78,10 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: #000000;
+            background: #000000 !important;
             padding: 15px 0;
             box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #333 !important;
         }
 
         /* Navigation links styling */
@@ -96,13 +93,9 @@
             justify-content: center;
         }
 
-        nav ul li {
-            margin: 0 15px;
-        }
-
         nav ul li a {
-            color: var(--text-muted);
-            text-decoration: none;
+            color: var(--text-muted) !important;
+            text-decoration: none !important;
             font-weight: 700;
             padding: 10px 15px;
             text-transform: uppercase;
@@ -111,25 +104,21 @@
             border-bottom: 2px solid transparent;
         }
 
-        nav ul li a:hover {
-            color: var(--accent-orange);
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-orange) !important;
             text-shadow: 0 0 8px var(--accent-orange);
-        }
-
-        nav ul li a.active {
-            color: var(--accent-red);
-            border-bottom: 2px solid var(--accent-red);
+            border-bottom: 2px solid var(--accent-orange);
         }
 
         /* Section Styling */
         section {
             padding: 60px 0;
-            background-color: var(--bg-color);
+            background-color: var(--bg-color) !important;
         }
 
-        /* --- ANIMATED SECTION HEADERS (Orange, Red, Black) --- */
+        /* --- ANIMATED SECTION HEADERS --- */
         h2 {
-            color: #fff;
+            color: #fff !important;
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 50px;
@@ -158,7 +147,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: linear-gradient(90deg, #FF6B00, #FF0000);
+            background: linear-gradient(90deg, #FF6B00, #FF0000) !important;
             border-radius: 2px;
             box-shadow: 0 0 10px var(--accent-orange);
         }
@@ -183,14 +172,14 @@
             height: 250px;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid var(--accent-orange);
+            border: 4px solid var(--accent-orange) !important;
             box-shadow: 0 0 25px rgba(255, 107, 0, 0.4);
         }
 
         .about-text {
             max-width: 600px;
             line-height: 1.8;
-            color: var(--text-muted);
+            color: var(--text-muted) !important;
         }
 
         /* Floating project cards */
@@ -201,8 +190,8 @@
         }
 
         .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid #333;
+            background-color: var(--card-bg) !important;
+            border: 1px solid #333 !important;
             border-radius: 8px;
             overflow: hidden;
             animation: floatCard 4s ease-in-out infinite;
@@ -212,7 +201,7 @@
 
         .project-card:hover {
             transform: translateY(-12px);
-            border-color: var(--accent-orange);
+            border-color: var(--accent-orange) !important;
             box-shadow: 0 15px 30px rgba(255, 0, 0, 0.25);
         }
 
@@ -220,7 +209,7 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-bottom: 2px solid var(--accent-red);
+            border-bottom: 2px solid var(--accent-red) !important;
         }
 
         .project-card-content {
@@ -228,13 +217,13 @@
         }
 
         .project-card h3 {
-            color: #fff;
+            color: #fff !important;
             margin-top: 0;
             font-size: 1.2rem;
         }
 
         .project-card p {
-            color: #aaa;
+            color: #aaa !important;
             font-size: 0.95rem;
             line-height: 1.5;
         }
@@ -245,18 +234,19 @@
             display: inline-block;
             padding: 10px 20px;
             border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold; /* Bold */
+            text-decoration: none !important;
+            font-weight: bold !important;
             margin-right: 10px;
             margin-top: 10px;
             font-size: 0.9rem;
-            color: white !important; /* Force White Text */
+            color: white !important;
+            background: none;
         }
 
         /* Primary Button (Orange/Red Gradient) */
         .btn {
-            background: linear-gradient(45deg, #FF6B00, #FF0000);
-            border: none;
+            background: linear-gradient(45deg, #FF6B00, #FF0000) !important;
+            border: none !important;
             box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
         }
 
@@ -268,13 +258,14 @@
 
         /* Secondary Button (Outline) */
         .btn-secondary {
-            background-color: transparent;
-            border: 2px solid var(--accent-orange);
+            background-color: transparent !important;
+            border: 2px solid var(--accent-orange) !important;
+            color: white !important;
         }
 
         .btn-secondary:hover {
-            background-color: var(--accent-orange);
-            color: black !important; /* Black text on hover only */
+            background-color: var(--accent-orange) !important;
+            color: black !important;
             box-shadow: 0 0 15px rgba(255, 107, 0, 0.6);
         }
 
@@ -288,29 +279,29 @@
         }
 
         .skill-column {
-            background-color: var(--card-bg);
+            background-color: var(--card-bg) !important;
             padding: 30px;
             border-radius: 8px;
-            border: 1px solid #333;
+            border: 1px solid #333 !important;
             text-align: center;
             transition: all 0.3s ease;
         }
 
         .skill-column:hover {
             transform: translateY(-5px);
-            border-color: var(--accent-red);
+            border-color: var(--accent-red) !important;
             box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
         }
 
         .skill-header i {
-            color: var(--accent-orange);
+            color: var(--accent-orange) !important;
             font-size: 2.5rem;
             margin-bottom: 15px;
             text-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
         }
 
         .skill-header h3 {
-            color: #fff;
+            color: #fff !important;
             margin: 0 0 20px 0;
         }
 
@@ -322,7 +313,7 @@
 
         .skill-list li {
             padding: 10px 0;
-            color: var(--text-muted);
+            color: var(--text-muted) !important;
             border-bottom: 1px solid #333;
         }
 
@@ -334,16 +325,16 @@
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
-            background-color: var(--card-bg);
+            background-color: var(--card-bg) !important;
             padding: 40px;
             border-radius: 8px;
-            border: 1px solid #333;
+            border: 1px solid #333 !important;
         }
 
         .contact-form p {
             text-align: center;
             margin-bottom: 30px;
-            color: var(--text-muted);
+            color: var(--text-muted) !important;
         }
 
         .form-group {
@@ -353,7 +344,7 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: var(--accent-orange);
+            color: var(--accent-orange) !important;
             font-weight: bold;
         }
 
@@ -361,10 +352,10 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            background-color: #222;
-            border: 1px solid #444;
+            background-color: #222 !important;
+            border: 1px solid #444 !important;
             border-radius: 4px;
-            color: #fff;
+            color: #fff !important;
             font-family: 'Lato', sans-serif;
             box-sizing: border-box;
         }
@@ -372,17 +363,17 @@
         .form-group input:focus, 
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent-red);
+            border-color: var(--accent-red) !important;
             box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
         }
 
         /* Footer */
         footer {
-            background-color: #000;
-            color: #666;
+            background-color: #000 !important;
+            color: #666 !important;
             text-align: center;
             padding: 20px 0;
-            border-top: 1px solid #333;
+            border-top: 1px solid #333 !important;
         }
 
         /* Social Links */
@@ -391,29 +382,29 @@
         }
 
         .social-links a {
-            color: white;
+            color: white !important;
             font-size: 1.5rem;
             margin: 0 15px;
             transition: color 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent-orange);
+            color: var(--accent-orange) !important;
         }
 
         .btn-cv {
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255,255,255,0.1) !important;
             padding: 10px 15px;
             border-radius: 50%;
-            color: white;
+            color: white !important;
             font-size: 1.2rem;
-            text-decoration: none;
+            text-decoration: none !important;
             display: inline-block;
         }
         
         .btn-cv:hover {
-            background-color: var(--accent-orange);
-            color: black;
+            background-color: var(--accent-orange) !important;
+            color: black !important;
         }
 
         /* Responsive */
