@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Asyraaf Mohd Zaid | Engineering Portfolio</title>
+    <title>Muhammad Asyraaf Mohamad Zaid | Engineering Portfolio</title>
     <link rel="icon" type="image/png" href="./favicon-32x32.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,16 +11,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        /* --- DARK ENGINEERING THEME REVISIONS --- */
-        
+        /* --- THEME: ORANGE, RED & BLACK ENGINEERING --- */
+
         :root {
-            --bg-color: #121212;
-            --card-bg: #1E1E1E;
+            --bg-color: #0a0a0a; /* Deep Black */
+            --card-bg: #141414;  /* Dark Charcoal */
             --accent-orange: #FF6B00;
-            --accent-orange-hover: #e65100;
+            --accent-red: #FF0000;
             --text-main: #E0E0E0;
             --text-muted: #B0B0B0;
-            --border-color: #333333;
         }
 
         /* Smooth scroll */
@@ -49,14 +48,15 @@
             transform: translateY(0);
         }
 
-        /* Animated gradient header - Dark Engineering Style */
+        /* Animated gradient header - Orange, Red, Black */
         header {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1c1c1c 50%, #d35400 100%);
+            background: linear-gradient(-45deg, #000000, #4a0000, #ff4500, #ff8c00, #000000);
             background-size: 400% 400%;
-            animation: gradientMove 10s ease infinite;
+            animation: gradientMove 8s ease infinite;
             color: white;
             padding: 60px 0;
-            border-bottom: 4px solid var(--accent-orange);
+            border-bottom: 4px solid var(--accent-red);
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
         }
 
         @keyframes gradientMove {
@@ -67,11 +67,13 @@
 
         header h1 {
             color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin: 0;
         }
 
         header p {
             color: #dcdcdc;
+            font-size: 1.1rem;
         }
 
         /* Sticky nav */
@@ -81,7 +83,7 @@
             z-index: 1000;
             background: #000000;
             padding: 15px 0;
-            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.15);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
             border-bottom: 1px solid #333;
         }
 
@@ -111,11 +113,12 @@
 
         nav ul li a:hover {
             color: var(--accent-orange);
+            text-shadow: 0 0 8px var(--accent-orange);
         }
 
         nav ul li a.active {
-            color: var(--accent-orange);
-            border-bottom: 2px solid var(--accent-orange);
+            color: var(--accent-red);
+            border-bottom: 2px solid var(--accent-red);
         }
 
         /* Section Styling */
@@ -124,19 +127,46 @@
             background-color: var(--bg-color);
         }
 
+        /* --- ANIMATED SECTION HEADERS (Orange, Red, Black) --- */
         h2 {
-            color: var(--accent-orange);
-            text-align: center;
+            color: #fff; /* Fallback */
             font-size: 2.5rem;
-            margin-bottom: 40px;
+            text-align: center;
+            margin-bottom: 50px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border-bottom: 2px solid #333;
-            display: inline-block;
-            padding-bottom: 10px;
             position: relative;
+            display: inline-block;
             left: 50%;
             transform: translateX(-50%);
+            padding-bottom: 15px;
+            
+            /* Gradient Text Animation */
+            background: linear-gradient(45deg, #FF6B00, #FF0000, #000000, #FF6B00);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: headerFire 3s ease infinite;
+        }
+
+        /* Underline animation for headers */
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #FF6B00, #FF0000);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--accent-orange);
+        }
+
+        @keyframes headerFire {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* About Section */
@@ -154,7 +184,7 @@
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid var(--accent-orange);
-            box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+            box-shadow: 0 0 25px rgba(255, 107, 0, 0.4);
         }
 
         .about-text {
@@ -166,31 +196,31 @@
         /* Floating project cards */
         @keyframes floatCard {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
+            50% { transform: translateY(-8px); }
             100% { transform: translateY(0px); }
         }
 
         .project-card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            border: 1px solid #333;
             border-radius: 8px;
             overflow: hidden;
             animation: floatCard 4s ease-in-out infinite;
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            transition: all 0.4s ease;
             cursor: pointer;
         }
 
         .project-card:hover {
             transform: translateY(-12px);
             border-color: var(--accent-orange);
-            box-shadow: 0 15px 30px rgba(255, 107, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.25);
         }
 
         .project-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-bottom: 1px solid #333;
+            border-bottom: 2px solid var(--accent-red);
         }
 
         .project-card-content {
@@ -209,7 +239,7 @@
             line-height: 1.5;
         }
 
-        /* Button hover animation */
+        /* Buttons with Gradient */
         .btn, .btn-secondary {
             transition: all 0.3s ease;
             display: inline-block;
@@ -223,9 +253,10 @@
         }
 
         .btn {
-            background-color: var(--accent-orange);
-            color: #000;
-            border: 2px solid var(--accent-orange);
+            background: linear-gradient(45deg, #FF6B00, #FF0000);
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
         }
 
         .btn-secondary {
@@ -235,11 +266,9 @@
         }
 
         .btn:hover {
-            background-color: var(--accent-orange-hover);
-            border-color: var(--accent-orange-hover);
-            color: #fff;
             transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
+            color: #fff;
         }
 
         .btn-secondary:hover {
@@ -260,29 +289,27 @@
             background-color: var(--card-bg);
             padding: 30px;
             border-radius: 8px;
-            border: 1px solid var(--border-color);
+            border: 1px solid #333;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .skill-column:hover {
             transform: translateY(-5px);
-            border-color: var(--accent-orange);
-        }
-
-        .skill-header {
-            margin-bottom: 20px;
+            border-color: var(--accent-red);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
         }
 
         .skill-header i {
             color: var(--accent-orange);
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
         }
 
         .skill-header h3 {
             color: #fff;
-            margin: 0;
+            margin: 0 0 20px 0;
         }
 
         .skill-list {
@@ -292,7 +319,7 @@
         }
 
         .skill-list li {
-            padding: 8px 0;
+            padding: 10px 0;
             color: var(--text-muted);
             border-bottom: 1px solid #333;
         }
@@ -308,7 +335,7 @@
             background-color: var(--card-bg);
             padding: 40px;
             border-radius: 8px;
-            border: 1px solid var(--border-color);
+            border: 1px solid #333;
         }
 
         .contact-form p {
@@ -332,7 +359,7 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            background-color: #2c2c2c;
+            background-color: #222;
             border: 1px solid #444;
             border-radius: 4px;
             color: #fff;
@@ -343,7 +370,8 @@
         .form-group input:focus, 
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent-orange);
+            border-color: var(--accent-red);
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
         }
 
         /* Footer */
@@ -377,6 +405,8 @@
             border-radius: 50%;
             color: white;
             font-size: 1.2rem;
+            text-decoration: none;
+            display: inline-block;
         }
         
         .btn-cv:hover {
@@ -452,6 +482,7 @@
         </div>
     </nav>
 
+ 
     <!-- ABOUT -->
     <section id="about" class="section reveal">
         <div class="container">
