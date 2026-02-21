@@ -14,10 +14,10 @@
         /* --- THEME: ORANGE, RED & BLACK ENGINEERING --- */
 
         :root {
-            --bg-color: #0a0a0a; /* Deep Black */
-            --card-bg: #141414;  /* Dark Charcoal */
-            --accent-orange: #FF6B00;
-            --accent-red: #FF0000;
+            --bg-color: #0a0a0a;       /* Deep Black */
+            --card-bg: #141414;        /* Dark Charcoal */
+            --accent-orange: #FF6B00;  /* Safety Orange */
+            --accent-red: #FF0000;     /* Engineering Red */
             --text-main: #E0E0E0;
             --text-muted: #B0B0B0;
         }
@@ -129,7 +129,7 @@
 
         /* --- ANIMATED SECTION HEADERS (Orange, Red, Black) --- */
         h2 {
-            color: #fff; /* Fallback */
+            color: #fff;
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 50px;
@@ -239,41 +239,43 @@
             line-height: 1.5;
         }
 
-        /* Buttons with Gradient */
+        /* --- BUTTON STYLING (White & Bold) --- */
         .btn, .btn-secondary {
             transition: all 0.3s ease;
             display: inline-block;
             padding: 10px 20px;
             border-radius: 4px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: bold; /* Bold */
             margin-right: 10px;
             margin-top: 10px;
             font-size: 0.9rem;
+            color: white !important; /* Force White Text */
         }
 
+        /* Primary Button (Orange/Red Gradient) */
         .btn {
             background: linear-gradient(45deg, #FF6B00, #FF0000);
-            color: #fff;
             border: none;
             box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--accent-orange);
-            border: 2px solid var(--accent-orange);
         }
 
         .btn:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
-            color: #fff;
+            color: white !important;
+        }
+
+        /* Secondary Button (Outline) */
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--accent-orange);
         }
 
         .btn-secondary:hover {
             background-color: var(--accent-orange);
-            color: #000;
+            color: black !important; /* Black text on hover only */
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.6);
         }
 
         /* Skills Section */
