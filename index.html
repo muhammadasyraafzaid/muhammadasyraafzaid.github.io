@@ -3,233 +3,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!--💡UPDATE: Change the title to your name-->
-    <title>Your Name | Data Analysis Portfolio</title>
-      
-    <!--💡UPDATE: Add your favicon here. You can generate one at realfavicongenerator.net-->
-    <link rel="icon" type="image/png" href="/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="/favicon-32x32.png">
-    
-    <!-- Google Fonts for Elegant Typography -->
+    <title>Muhammad Asyraaf Mohd Zaid | Engineering Portfolio</title>
+    <link rel="icon" type="image/png" href="./favicon-32x32.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    <!-- Your Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating project cards */
+        @keyframes floatCard {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .project-card {
+            animation: floatCard 4s ease-in-out infinite;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Animated gradient header */
+        header {
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a11cb, #2575fc);
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
+            color: white;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Sticky nav */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Navigation links styling */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 400;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #2575fc;
+        }
+
+        /* Button hover animation */
+        .btn, .btn-secondary {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover, .btn-secondary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0,0,0,0.25);
+        }
+
+        /* Navigation styling */
+        nav ul li a.active {
+            color: #2575fc;
+            border-bottom: 2px solid #2575fc;
+        }
+    </style>
 </head>
+<script>
+    // Active nav link on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav ul li a');
+        window.addEventListener('scroll', () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 80;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute("id");
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === "#" + current) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    });
+</script>
 <body>
-
-<!-- HEADER SECTION -->
-<header>
-    <div class="container">
-        <!--💡UPDATE: Change to your name and title-->
-        <h1>Your Name</h1>
-        <p>Data Analyst | Power BI Developer | Your Title Here</p>
-        <div class="social-links">
-            <!--💡UPDATE: Add your social media links and CV file-->
-            <a href="[YOUR_LINKEDIN_URL]" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="[YOUR_GITHUB_URL]" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="[YOUR_YOUTUBE_URL]" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="assets/Your_Name_CV.pdf" download title="Download CV"><i class="fas fa-file-arrow-down"></i></a>
-        </div>
-    </div>
-</header>
-
-<!-- NAVIGATION -->
-<nav>
-    <div class="container">
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-</nav>
-
-<!-- ABOUT SECTION -->
-<section id="about" class="section">
-    <div class="container">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <!--💡UPDATE: Change the image to your own profile photo in assets/images/-->
-            <img src="assets/images/profile-placeholder.jpg" alt="Your Name" class="profile-photo">
-            <div class="about-text">
-                <!--💡UPDATE: Write your own 'About Me' text here-->
-                <p> I'm a data professional with expertise in transforming complex datasets into actionable insights. My work focuses on creating interactive visualizations and data-driven stories that help organizations make informed decisions.</p>
-                <p>With experience in Power BI, SQL, and data modeling, I specialize in developing comprehensive reports that reveal hidden patterns and trends in data. This portfolio showcases my projects across various sectors.</p>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1>Hanna Sofea Mohd Zaid</h1>
+            <p>Bachelor of Science (HONS.) Statistics | Future Data Analyst & Data Scientist</p>
+            <p><strong>Available for Internship: March 2026 – July 2026</strong></p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/asyzaid/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/muhammadasyraafzaid" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="MUHAMMAD ASYRAAF BIN MOHAMAD ZAID Resume.pdf" download class="btn-cv">
+                    <i class="fas fa-file-arrow-down"></i>
+                </a>
             </div>
         </div>
-    </div>
-</section>
+    </header>
 
-<!-- PROJECTS SECTION -->
-<section id="projects" class="section">
-    <div class="container">
-        <h2>My Projects</h2>
-        <div class="projects-grid">
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#certificate">Certificates</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <!--💡UPDATE: Replace this with your own project. Add as many as you like!-->
-            <!-- Project 1 -->
-             <div class="project-card">
-                <!--💡UPDATE: Add a preview image of your project to assets/images/ -->
-                <img src="assets/images/project-placeholder-1.jpg" alt="Project One Preview">
-                <div class="project-card-content">
-                    <h3>Project Title One</h3>
-                    <p>A brief, one or two-sentence description of your project, what it does, and the tools you used.</p>
-                    <div class="project-buttons">
-                        <!--💡UPDATE: Add link to your project's code/documentation on GitHub-->
-                        <a href="[YOUR_GITHUB_PROJECT_URL]" target="_blank" class="btn">Documentation</a>
-                        <!--💡UPDATE: Add link to your live dashboard (e.g., Power BI, Tableau Public)-->
-                        <a href="[YOUR_LIVE_DASHBOARD_URL]" target="_blank" class="btn btn-secondary">View Dashboard</a>
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <img src="assets/images/HANNA GAMBAR CONVO DIPLOMA.jpeg" alt="Hanna Sofea Mohd Zaid" class="profile-photo">
+                <div class="about-text">
+                    <p>A motivated Statistics student from Universiti Teknologi MARA (UiTM), minoring in Big Data Analytics, with a CGPA of 3.68. Skilled in data collection, cleaning, analysis, and visualization using Excel, R, Python, and SPSS. Strong in data interpretation, problem-solving, and presenting insights.</p>
+                    <p>Currently seeking an internship to gain hands-on experience in data analysis and analytics projects, available from 30 March 2026 to 17 July 2026.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section reveal">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="assets/images/Diabetes2.webp" alt="Diabetes Dashboard Preview">
+                    <div class="project-card-content">
+                        <h3>📊 Diabetes Analysis (USA Dataset)</h3>
+                        <p>Engineered an interactive Power BI dashboard and Microsoft Excel to visualize clinical markers and demographic trends from 100,000 patient records and also do data cleaning and preparation.</p>
+                        <p>Skills: Power BI, Excel, Microsoft Word, Canva, Data Cleaning, Visualization</p>
+                        <div class="project-buttons">
+                            <a href="https://app.powerbi.com/groups/me/reports/22ccd229-e388-4918-b1e0-793195fbfedd/e99410e2a05889206259?experience=power-bi" target="_blank" class="btn">View Dashboard</a>
+                            <a href="DSC651 PRESENTATION SLIDE (GROUP 5).pdf" target="_blank" class="btn btn-secondary">Slides</a>
+                            <a href="DSC651 WORKBOOK HANNA SOFEA.xlsx" target="_blank" class="btn btn-secondary">EDA Excel</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/uniqlo_Logo.jpg" alt="Sentiment Analysis Preview">
+                    <div class="project-card-content">
+                        <h3>🤖 Sentiment Analysis of Uniqlo Online Customer Reviews in Producing a Classifier Model</h3>
+                        <p> Scraped customer review data using Python and developed a sentiment classification model using Altair AI Studio (RapidMiner), with Tableau used for visualization and analysis.</p>
+                        <p>Skills: Python, RapidMiner, Microsoft Word, Canva, Tableau, Data Scraping, Sentiment Analysis</p>
+                        <div class="project-buttons">
+                            <a href="ISP610 PRESENTATION SLIDE.pdf" download class="btn"><i class="fas fa-file-arrow-down"></i> Slides</a>
+                            <a href="Uniqlo_Model.rmp" download class="btn btn-secondary">Model</a>
+                            <a href="DATA SCRAPPING ISP 610.ipynb" download class="btn btn-secondary">Python Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/i-SACR_image_logo.PNG" alt="i-SACR Interface Preview">
+                    <div class="project-card-content">
+                        <h3>📱 Interface Student Academic Resolver (i-SACR)</h3>
+                        <p>Designed a high-fidelity UI/UX prototype in Figma for a mobile application focused on student conflict resolution and burnout management.</p>
+                        <p>Skills: Figma, Canva, Microsoft Word, UI/UX Design, Prototyping</p>
+                        <div class="project-buttons">
+                            <a href="https://www.figma.com/proto/zQ8mYoiVppvVEeLgdr83LL/i-SACR?node-id=44-96&p=f&t=n9qLctsF8KvIFPu9-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=26%3A7&show-proto-sidebar=1" target="_blank" class="btn btn-secondary">View Dashboard</a>
+                            <a href="CS2416T2_INTERFACESTUDENTACADEMICRESOLVER(i-SACR)_slides.pdf" target="_blank" class="btn btn-secondary">Slides</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/diabetes1.jfif" alt="FYP Predictive Model Preview">
+                    <div class="project-card-content">
+                        <h3>🧪 Final Year Project: Predictive Model For Diabetes Using Logistic Regression</h3>
+                        <p>Developed a Logistic Regression model to identify key health risk factors and predict future diabetes diagnosis probability.</p>
+                        <p>Skills: R Studio, Microsoft Word, SPSS, Canva, SAS Enterprise Miner, Logistic Regression, Predictive Modeling</p>
+                        <div class="project-buttons">
+                            <a href="FYP_Diabetes_Model.R" download class="btn"><i class="fas fa-file-arrow-down"></i> R script</a>
+                            <a href="https://hannasofeapresentationfypslides.my.canva.site/" target="_blank" class="btn btn-secondary">Slides</a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="project-card">
+                    <img src="assets/images/Copy of ENT600.png" alt="GRLGO Preview">
+                    <div class="project-card-content">
+                        <h3>🚖 GRLGO: Women’s Smart Ride Service</h3>
+                        <p> GRLGO is a women-only ride-hailing mobile application concept designed to enhance safety and comfort for female passengers by connecting them exclusively with verified female drivers. The user interface and app prototype were designed using Figma, supported by a clear business model and user-focused features.</p>
+                        <p>Skills: Figma, Excel, Capcut, Canva, Microsoft Word, Business Planning, UI/UX Design</p>
+                        <div class="project-buttons">
+                            <a href="https://hannasofeapresentationfypslides.my.canva.site/copy-of-ent600" download class="btn"></i> Slides</a>
+                            <a href="BP BARU ENT 600.pdf" download class="btn btn-secondary">BP Report</a>
+                            <a href="NPD REPORT ENT600.pdf" download class="btn btn-secondary">NPD Report</a>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Project 2 -->
-            <div class="project-card">
-                <img src="assets/images/project-placeholder-2.jpg" alt="Project Two Preview">
-                <div class="project-card-content">
-                    <h3>Project Title Two</h3>
-                    <p>A brief, one or two-sentence description of your project, what it does, and the tools you used.</p>
-                    <div class="project-buttons">
-                        <a href="[YOUR_GITHUB_PROJECT_URL]" target="_blank" class="btn">Documentation</a>
-                        <a href="[YOUR_LIVE_DASHBOARD_URL]" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card">
-                <img src="assets/images/project-placeholder-3.jpg" alt="Project Three Preview">
-                <div class="project-card-content">
-                    <h3>Project Title Three</h3>
-                    <p>A brief, one or two-sentence description of your project, what it does, and the tools you used.</p>
-                    <div class="project-buttons">
-                        <a href="[YOUR_GITHUB_PROJECT_URL]" target="_blank" class="btn">Documentation</a>
-                        <a href="[YOUR_LIVE_DASHBOARD_URL]" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="project-card">
-                <img src="assets/images/project-placeholder-4.jpg" alt="Project Four Preview">
-                <div class="project-card-content">
-                    <h3>Project Title Four</h3>
-                    <p>A brief, one or two-sentence description of your project, what it does, and the tools you used.</p>
-                    <div class="project-buttons">
-                        <a href="[YOUR_GITHUB_PROJECT_URL]" target="_blank" class="btn">Documentation</a>
-                        <a href="[YOUR_LIVE_DASHBOARD_URL]" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                    </div>
-                </div>
-            </div>
-
+            <!-- CLOSE projects-grid -->
         </div>
-    </div>
-</section>
+        <!-- CLOSE container -->
+    </section>
 
-<!-- SKILLS SECTION -->
-<section id="skills" class="section">
-    <div class="container">
-        <h2>Technical Skillset</h2>
-        <div class="skills-table">
-            
-            <!--💡UPDATE: Customize your skills in each category-->
-            <!-- Column 1: Data Visualization -->
-            <div class="skill-column">
-                <div class="skill-header">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Data Visualization</h3>
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal">
+        <div class="container">
+            <h2>Technical Skillset</h2>
+            <div class="skills-table">
+                <div class="skill-column">
+                    <div class="skill-header">
+                        <i class="fas fa-chart-pie"></i>
+                        <h3>Data Visualization</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Power BI</li>
+                        <li>Tableau</li>
+                        <li>AI Studio</li>
+                        <li>Excel Dashboards</li>
+                    </ul>
                 </div>
-                <ul class="skill-list">
-                    <li>Power BI</li>
-                    <li>Tableau</li>
-                    <li>Looker Studio</li>
-                    <li>Excel Dashboards</li>
-                </ul>
-            </div>
-
-            <!-- Column 2: Data Analysis -->
-            <div class="skill-column">
-                <div class="skill-header">
-                    <i class="fas fa-search-plus"></i>
-                    <h3>Data Analysis</h3>
+                <div class="skill-column">
+                    <div class="skill-header">
+                        <i class="fas fa-search-plus"></i>
+                        <h3>Data Analysis</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>SQL</li>
+                        <li>Advanced Excel</li>
+                        <li>Python (Pandas)</li>
+                        <li>Google Sheets</li>
+                        <li>R Studio</li>
+                    </ul>
                 </div>
-                <ul class="skill-list">
-                    <li>SQL</li>
-                    <li>Advanced Excel</li>
-                    <li>Python (Pandas)</li>
-                    <li>Google Sheets</li>
-                </ul>
-            </div>
-
-            <!-- Column 3: Data Modeling & ETL -->
-            <div class="skill-column">
-                <div class="skill-header">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Data Modeling & ETL</h3>
+                <div class="skill-column">
+                    <div class="skill-header">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Data Modeling</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>AI Studio/Rapidminer</li>
+                        <li>SAS Studio</li>
+                        <li>SAS Enterprise Miner</li>
+                        <li>Alteryx</li>
+                    </ul>
                 </div>
-                <ul class="skill-list">
-                    <li>Power Query (M)</li>
-                    <li>DAX</li>
-                    <li>Star Schema Design</li>
-                    <li>ETL Processes</li>
-                </ul>
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- CONTACT FORM SECTION -->
-<section id="contact" class="section">
-    <div class="container">
-        <h2>Send me a message</h2>
-        
-        <!--💡UPDATE: Go to formsubmit.co and replace the email with your own-->
-        <form action="https://formsubmit.co/your-email@example.com" method="POST" class="contact-form">
-            <p> Interested in collaborating or have questions about my work? I'd love to hear from you!</p>
+    <!-- CONTACT -->
+    <section id="contact" class="section reveal">
+        <div class="container">
+            <h2>Send me a message</h2>
+            <form action="https://formsubmit.co/hannasofeazaid@gmail.com" method="POST" class="contact-form">
+                <p>Interested in collaborating or have questions about my work? I'd love to hear from you!</p>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
 
-            <!-- Form Fields -->
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" placeholder="Your name" required>
+    <!-- CERTIFICATES -->
+    <section id="certificate" class="section reveal">
+        <div class="container">
+            <h2>Awards & Certifications</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="assets/images/Data Analyst Certificate.PNG" alt="Certification Preview">
+                    <div class="project-card-content">
+                        <h3>🏆 Datacamp Data Analytics Professional Certificate</h3>
+                        <p>Issued by Datacamp | Mastery of data cleaning, analysis, and visualization using Power BI and SQL.</p>
+                        <div class="project-buttons">
+                            <a href="https://www.datacamp.com/certificate/DAA0010112070000" target="_blank" class="btn btn-secondary">View Certificate</a>
+                            <a href="Hanna_Data_Analyst_Cert.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-file-arrow-down"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/Data Scientist.PNG" alt="Certification Preview">
+                    <div class="project-card-content">
+                        <h3>🏆 Datacamp Data Scientist Professional Certificate</h3>
+                        <p>Issued by Datacamp | Mastery of data cleaning, analysis, and visualization using Python and R Studio.</p>
+                        <div class="project-buttons">
+                            <a href="https://www.datacamp.com/certificate/DSA0015727329346" target="_blank" class="btn btn-secondary">View Certificate</a>
+                            <a href="Hanna_Data_Scientist_Cert.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-file-arrow-down"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/Datacamp Alteryx.PNG" alt="DataCamp Preview">
+                    <div class="project-card-content">
+                        <h3>📊 DataCamp: Statement of Accomplishment for Alteryx</h3>
+                        <p>Verified skills in data preparation, analysis, and data cleaning sharing using Alteryx.</p>
+                        <div class="project-buttons">
+                            <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/b651066f500ea4a8544966fdcf2a1b7e7de258a1" target="_blank" class="btn btn-secondary">View Certificate</a>
+                            <a href="Hanna_Alteryx_Cert.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-file-arrow-down"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/ANC image.jpeg" alt="Certification Preview">
+                    <div class="project-card-content">
+                        <h3>🏆 Vice Chancellor Award UiTM Diploma Certificate</h3>
+                        <p>Awarded by Universiti Teknologi MARA (UiTM) in recognition of outstanding academic performance and consistent excellence throughout the diploma programme.</p>
+                        <div class="project-buttons">
+                            <a href="VICE CHANCELLORS CERTIFICATE AWARD.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-file-arrow-down"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/Complete Diploma.jpeg" alt="DataCamp Preview">
+                    <div class="project-card-content">
+                        <h3>📊 Completion of Diploma in Statistics</h3>
+                        <p>Completed with Vice Chancellor Award and a CGPA of 3.75.</p>
+                        <div class="project-buttons">
+                            <a href="COMPLETITION OF DIPLOMA STATISTICS.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-file-arrow-down"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/Dekan Sem 3 image.jpeg" alt="Certification Preview">
+                    <div class="project-card-content">
+                        <h3>🏆 Dean’s List — Semester 3, Degree in Statistics</h3>
+                        <p>Recognized on the Dean’s List for excellent academic performance in Semester 3 of the Bachelor’s Degree in Statistics</p>
+                        <div class="project-buttons">
+                            <a href="CERTIFICATE DEAN LIST AWARD SEMESTER 3.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-file-arrow-down"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/Dekan Sem 4 image.jpeg" alt="DataCamp Preview">
+                    <div class="project-card-content">
+                        <h3>📊 Dean’s List — Semester 4, Degree in Statistics</h3>
+                        <p>Recognized on the Dean’s List for excellent academic performance in Semester 4 of the Bachelor’s Degree in Statistics</p>
+                        <div class="project-buttons">
+                            <a href="CERTIFICATE DEAN LIST AWARD SEMESTER 4.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-file-arrow-down"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/sijils best presenter.jpeg" alt="Certification Preview">
+                    <div class="project-card-content">
+                        <h3>🏆 Top 10 Best Presenter — Final Year Project (FYP)</h3>
+                        <p>Recognized as one of the Top 10 Best Presenters for the Final Year Project (FYP) in acknowledgment of outstanding presentation skills, research quality, and project delivery.</p>
+                        <div class="project-buttons">
+                            <a href="sijil best presenter.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-file-arrow-down"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/Python.PNG" alt="DataCamp Preview">
+                    <div class="project-card-content">
+                        <h3>📊 DataCamp: Python Data Associate Professional Certificate</h3>
+                        <p>Earned the Python Data Associate Professional Certificate from DataCamp, demonstrating proficiency in Python programming, data manipulation, data analysis, and practical problem-solving using real-world datasets.</p>
+                        <div class="project-buttons">
+                            <a href="https://www.datacamp.com/certificate/PDA0017544263798" target="_blank" class="btn btn-secondary">View Certificate</a>
+                            <a href="PDA0017544263798.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-file-arrow-down"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/SQL.PNG" alt="DataCamp Preview">
+                    <div class="project-card-content">
+                        <h3>🗄️ DataCamp: SQL Associate Professional Certificate</h3>
+                        <p>Earned the SQL Associate Professional Certificate from DataCamp, showcasing skills in writing SQL queries, database management, data extraction, and analyzing structured data for business insights.</p>
+                        <div class="project-buttons">
+                            <a href="https://www.datacamp.com/certificate/SQA0010216434577" target="_blank" class="btn btn-secondary">View Certificate</a>
+                            <a href="SQA0010216434577.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-file-arrow-down"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="assets/images/Semester 5 gambar.jpeg" alt="Certification Preview">
+                    <div class="project-card-content">
+                        <h3>📊 Dean’s List — Semester 5, Degree in Statistics</h3>
+                        <p>Recognized on the Dean’s List for excellent academic performance in Semester 5 of the Bachelor’s Degree in Statistics</p>
+                        <div class="project-buttons">
+                            <a href="Semester 5.pdf" download class="btn btn-secondary">
+                                <i class="fas fa-file-arrow-down"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Your email" required>
-            </div>
-            <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" name="subject" id="subject" placeholder="Subject" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea name="message" id="message" rows="6" placeholder="Your message" required></textarea>
-            </div>
-            
-            <!-- Submit Button -->
-            <button type="submit" class="btn">Send Message</button>
+        </div>
+    </section>
 
-        </form>
-    </div>
-</section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Hanna Sofea Mohd Zaid. All rights reserved.</p>
+        </div>
+    </footer>
 
-<!-- FOOTER -->
-<footer>
-    <div class="container">
-        <!--💡UPDATE: Change the year and your name-->
-        <p>&copy; 2025 Your Name. All rights reserved.</p>
-    </div>
-</footer>
-
-<script src="assets/js/main.js"></script>
-
-</body>
-</html>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal');
+        function revealOnScroll() {
+            revealElements.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 120) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
